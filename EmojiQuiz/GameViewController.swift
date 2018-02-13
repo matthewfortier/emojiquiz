@@ -39,17 +39,19 @@ class GameViewController: UIViewController {
     
     @IBOutlet weak var Keyboard: UIStackView!
     
-    var questions: [Question] = [Question("🌽🐶", "Corn Dog", "Thing"), Question("🦁👑", "Lion King", "Thing")]
+    var questions: [Question] = [] //= [Question("🌽🐶", "Corn Dog", "Thing"), Question("🦁👑", "Lion King", "Thing")]
     var numQuestions: Int = 0
     
+    var category: String  = ""
     var incorrectGuesses: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         numQuestions = UserDefaults.standard.integer(forKey: "numQuestions")
-        
+        category = UserDefaults.standard.string(forKey: "category")!
+        readPlist()
         setAnswersToDashes(0)
         
         EmojiLabel.text = questions[0].getQuestion()
@@ -127,6 +129,36 @@ class GameViewController: UIViewController {
     func loadLeaderBoard() {
         performSegue(withIdentifier: "ShowLeaderBoard",
                      sender: self)
+    }
+    
+    func checkCategory () {
+        
+        if category == "0" {
+            category = "movies"
+            print(category)
+        }
+        else if category == "1" {
+    
+            category = "sayings"
+            print(category)
+        }
+        else {
+            category = "ERROR"
+        }
+        
+    }
+    func readPlist () {
+        var newQuestion : Question
+        checkCategory()
+        if let path = Bundle.main.path(forResource: category, ofType: "plist") {
+            if let dict = NSDictionary(contentsOfFile: path) as? [String: Any] {
+                for item in 0..<Array(dict).count {
+                    newQuestion = Question(Array(dict)[item].key, String(describing: Array(dict)[item].value), "Movies")
+                    questions.append(newQuestion)
+                }
+            }
+        }
+
     }
     
     func resetKeyboard() {
