@@ -314,9 +314,15 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="------" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9r-uN-a2j">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="------" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9r-uN-a2j">
                                 <rect key="frame" x="155.5" y="323" width="64" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Fw-cu-lXr">
+                                <rect key="frame" x="349" y="69" width="21" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -325,10 +331,12 @@
                         <constraints>
                             <constraint firstItem="MJ4-64-oBs" firstAttribute="top" secondItem="Bj2-Xa-guz" secondAttribute="top" constant="106" id="2Ck-ID-5oa"/>
                             <constraint firstItem="Bj2-Xa-guz" firstAttribute="trailing" secondItem="rrs-fX-b3i" secondAttribute="trailing" constant="20" id="3cb-cs-JgH"/>
+                            <constraint firstItem="Bj2-Xa-guz" firstAttribute="trailing" secondItem="3Fw-cu-lXr" secondAttribute="trailing" constant="5" id="DpY-0j-JB3"/>
                             <constraint firstItem="rrs-fX-b3i" firstAttribute="leading" secondItem="Bj2-Xa-guz" secondAttribute="leading" constant="20" id="EZw-zI-VEM"/>
                             <constraint firstItem="MJ4-64-oBs" firstAttribute="centerX" secondItem="Bj2-Xa-guz" secondAttribute="centerX" id="VG1-9w-6IS"/>
                             <constraint firstItem="v9r-uN-a2j" firstAttribute="centerX" secondItem="Bj2-Xa-guz" secondAttribute="centerX" id="YLQ-hC-z0f"/>
                             <constraint firstItem="Bj2-Xa-guz" firstAttribute="bottom" secondItem="rrs-fX-b3i" secondAttribute="bottom" constant="25" id="hQO-ne-Z7o"/>
+                            <constraint firstItem="3Fw-cu-lXr" firstAttribute="top" secondItem="Bj2-Xa-guz" secondAttribute="top" constant="5" id="tz5-fU-3D4"/>
                             <constraint firstItem="v9r-uN-a2j" firstAttribute="top" secondItem="Bj2-Xa-guz" secondAttribute="top" constant="259" id="xwU-3V-i2l"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Bj2-Xa-guz"/>
@@ -337,12 +345,13 @@
                         <outlet property="AnswerLabel" destination="v9r-uN-a2j" id="pnX-2v-cnZ"/>
                         <outlet property="EmojiLabel" destination="MJ4-64-oBs" id="Jqf-gI-fXo"/>
                         <outlet property="Keyboard" destination="rrs-fX-b3i" id="p7i-K0-FHa"/>
+                        <outlet property="TimerLabel" destination="3Fw-cu-lXr" id="2QY-0X-grv"/>
                         <segue destination="DNB-18-uIS" kind="show" identifier="EndGame" id="48J-kh-fUL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pF0-Oc-QVF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2218.4000000000001" y="-321.58920539730138"/>
+            <point key="canvasLocation" x="2257" y="-322"/>
         </scene>
         <!--End Game View Controller-->
         <scene sceneID="ffe-fr-H7s">
@@ -408,7 +417,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jOC-SO-rIC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2952" y="-323"/>
+            <point key="canvasLocation" x="3015" y="-322"/>
         </scene>
         <!--High Scores-->
         <scene sceneID="wg7-f3-ORb">
@@ -538,7 +547,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="leaderboard" width="40" height="40"/>
-        <image name="play" width="40" height="40"/>
+        <image name="leaderboard" width="20" height="20"/>
+        <image name="play" width="26" height="26"/>
     </resources>
 </document>

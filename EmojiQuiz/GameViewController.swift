@@ -28,11 +28,26 @@ extension String {
     }
 }
 
+extension Array {
+    public func shuffled() -> Array<Element> {
+        var shuffledArray = self // value semantics (Array is Struct) makes this a copy
+        if count < 2 { return shuffledArray } // already shuffled
+        for i in (1..<count).reversed() { // count backwards
+            let position = Int(arc4random_uniform(UInt32(i + 1))) // random to swap
+            if i != position { // swap with the end, don't bother with self swaps
+                shuffledArray.swapAt(i, position)
+            }
+        }
+        return shuffledArray
+    }
+}
+
 
 class GameViewController: UIViewController {
     
     @IBOutlet weak var EmojiLabel: UILabel!
     @IBOutlet weak var AnswerLabel: UILabel!
+    @IBOutlet weak var TimerLabel: UILabel!
     
     var currentAnswerString: String = ""
     var currentQuestionIndex: Int = 0
@@ -45,6 +60,9 @@ class GameViewController: UIViewController {
     var category: String  = ""
     var incorrectGuesses: Int = 0
     var score: Int = 0
+    var countDown = 30
+    
+    var timer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +74,7 @@ class GameViewController: UIViewController {
         setAnswersToDashes(0)
         
         EmojiLabel.text = questions[0].getQuestion()
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCountDown), userInfo: nil, repeats: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -89,6 +108,7 @@ class GameViewController: UIViewController {
             
             if (!currentAnswerString.contains("-") && currentQuestionIndex == numQuestions - 1) {
                 score += 1
+                print("TEST")
                 loadLeaderBoard()
             } else if (!currentAnswerString.contains("-") && currentQuestionIndex < numQuestions) {
                 score += 1
@@ -103,6 +123,16 @@ class GameViewController: UIViewController {
         }
     }
     
+    @objc func updateCountDown() {
+        if(countDown > 0) {
+            TimerLabel.text = String(countDown)
+            countDown = countDown - 1
+        } else if (countDown == 0) {
+            countDown = countDown - 1
+            loadLeaderBoard()
+        }
+    }
+    
     func setAnswersToDashes(_ index: Int) {
         let y = questions[index].getAnswer().replacingOccurrences(of: "[a-zA-Z0-9]", with: "-", options: .regularExpression, range: nil)
         
@@ -112,6 +142,7 @@ class GameViewController: UIViewController {
     
     func loadNextQuestion() {
         currentQuestionIndex += 1
+        countDown = 30
         
         setAnswersToDashes(currentQuestionIndex)
         resetKeyboard()
@@ -130,9 +161,19 @@ class GameViewController: UIViewController {
     }
     
     func loadLeaderBoard() {
+        
+        EmojiLabel.text = questions[0].getQuestion()
+        currentAnswerString = ""
+        currentQuestionIndex = 0
+        questions = questions.shuffled()
+        setAnswersToDashes(0)
+        resetKeyboard()
+        
         UserDefaults.standard.set(score, forKey: "score")
         performSegue(withIdentifier: "EndGame",
                      sender: self)
+        
+        score = 0
     }
     
     func checkCategory () {
@@ -151,6 +192,7 @@ class GameViewController: UIViewController {
         }
         
     }
+    
     func readPlist () {
         var newQuestion : Question
         checkCategory()
@@ -162,7 +204,7 @@ class GameViewController: UIViewController {
                 }
             }
         }
-
+        questions = questions.shuffled()
     }
     
     func resetKeyboard() {

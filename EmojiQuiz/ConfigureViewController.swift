@@ -32,8 +32,6 @@ class ConfigureViewController: UIViewController {
     @IBAction func play(_ sender: UIButton) {
         UserDefaults.standard.set(categorySelector.selectedSegmentIndex, forKey: "category")
         UserDefaults.standard.set(UInt(questions.text!), forKey: "numQuestions")
-        
-        
     }
 }
 

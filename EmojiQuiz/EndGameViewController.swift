@@ -20,7 +20,6 @@ class EndGameViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
         Score.text = String(UserDefaults.standard.integer(forKey: "score"))
     }
 
@@ -49,6 +48,9 @@ class EndGameViewController: UIViewController {
             
             UserDefaults.standard.set(sayings, forKey: "sayings")
         }
+        
+        tabBarController?.selectedIndex = 1
+        navigationController?.popToRootViewController(animated: true)
     }
     
     /*
