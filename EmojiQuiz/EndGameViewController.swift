@@ -32,6 +32,15 @@ class EndGameViewController: UIViewController {
     @IBAction func submitScore(_ sender: UIButton) {
         if (UserDefaults.standard.integer(forKey: "category") == 0) {
             
+            if (UserDefaults.standard.object(forKey: "movies") != nil) {
+                movies = UserDefaults.standard.dictionary(forKey: "movies") as! [String : Int]
+            }
+            
+            movies[Name.text!] = UserDefaults.standard.integer(forKey: "score")
+            
+            UserDefaults.standard.set(movies, forKey: "movies")
+        } else {
+            
             if (UserDefaults.standard.object(forKey: "sayings") != nil) {
                 sayings = UserDefaults.standard.dictionary(forKey: "sayings") as! [String : Int]
             }

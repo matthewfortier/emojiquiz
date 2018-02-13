@@ -410,7 +410,7 @@
             </objects>
             <point key="canvasLocation" x="2952" y="-323"/>
         </scene>
-        <!--Leader Board-->
+        <!--High Scores-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
                 <viewController id="8rJ-Kc-sve" customClass="LeaderBoardViewController" customModule="EmojiQuiz" customModuleProvider="target" sceneMemberID="viewController">
@@ -418,8 +418,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leader Board" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kuj-x1-rls">
-                                <rect key="frame" x="136.5" y="223" width="102.5" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="High Scores" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kuj-x1-rls">
+                                <rect key="frame" x="141.5" y="223" width="93" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -430,24 +430,27 @@
                                     <segment title="Movies"/>
                                     <segment title="Sayings"/>
                                 </segments>
+                                <connections>
+                                    <action selector="changeCategory:" destination="8rJ-Kc-sve" eventType="valueChanged" id="gq5-t7-sTW"/>
+                                </connections>
                             </segmentedControl>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="lrk-N7-KNm">
-                                <rect key="frame" x="166" y="265" width="42" height="101.5"/>
+                                <rect key="frame" x="113" y="264.5" width="148.5" height="20.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EoF-dg-w6q">
-                                        <rect key="frame" x="0.0" y="0.0" width="42" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No scores reported" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EoF-dg-w6q">
+                                        <rect key="frame" x="0.0" y="0.0" width="148.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="54o-bd-31p">
-                                        <rect key="frame" x="0.0" y="40.5" width="42" height="20.5"/>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="54o-bd-31p">
+                                        <rect key="frame" x="0.0" y="-264.5" width="148.5" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i3r-wA-Y4m">
-                                        <rect key="frame" x="0.0" y="81" width="42" height="20.5"/>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i3r-wA-Y4m">
+                                        <rect key="frame" x="0.0" y="-264.5" width="148.5" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -468,7 +471,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Leader Board" id="tsR-xg-ghV"/>
+                    <navigationItem key="navigationItem" title="High Scores" id="tsR-xg-ghV"/>
                     <connections>
                         <outlet property="LeaderBoard" destination="lrk-N7-KNm" id="ASL-Wl-cgy"/>
                     </connections>
@@ -499,7 +502,7 @@
         <scene sceneID="oOQ-Ut-yOu">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nIw-be-5Ve" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Play" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Play" image="play" selectedImage="play" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gyF-9S-zaL">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -518,7 +521,7 @@
         <scene sceneID="Bw3-6L-MmU">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qY5-ev-wBB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Leader Board" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Leader Board" image="leaderboard" id="cPa-gy-q4n"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jAk-nO-lfi">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -535,7 +538,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="30" height="30"/>
-        <image name="second" width="30" height="30"/>
+        <image name="leaderboard" width="40" height="40"/>
+        <image name="play" width="40" height="40"/>
     </resources>
 </document>

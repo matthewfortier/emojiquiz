@@ -11,25 +11,10 @@ import UIKit
 class LeaderBoardViewController: UIViewController {
     @IBOutlet weak var LeaderBoard: UIStackView!
     
-    var sayings = [String: Int]()
-    var movies = [String: Int]()
+    var category = [String: Int]()
     
     override func viewDidAppear(_ animated: Bool) {
-        sayings = UserDefaults.standard.dictionary(forKey: "sayings") as! [String : Int]
-        
-        let scores = sayings.sorted(by: { $0.value > $1.value })
-        
-        if sayings.count > 3 {
-            for i in 0..<3 {
-                let label = LeaderBoard.arrangedSubviews[i] as! UILabel
-                label.text = "\(Array(scores)[i].key) \(Array(scores)[i].value)"
-            }
-        } else {
-            for i in 0..<sayings.count {
-                let label = LeaderBoard.arrangedSubviews[i] as! UILabel
-                label.text = "\(Array(scores)[i].key) \(Array(scores)[i].value)"
-            }
-        }
+        loadScores(name: "movies")
     }
     
     override func viewDidLoad() {
@@ -41,7 +26,47 @@ class LeaderBoardViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func loadScores(name: String) {
+        if (UserDefaults.standard.object(forKey: name) != nil) {
+            category = UserDefaults.standard.dictionary(forKey: name) as! [String : Int]
+            
+            let scores = category.sorted(by: { $0.value > $1.value })
+            
+            if category.count > 3 {
+                for i in 0..<3 {
+                    let label = LeaderBoard.arrangedSubviews[i] as! UILabel
+                    label.text = "\(Array(scores)[i].key) \(Array(scores)[i].value)"
+                    label.isHidden = false
+                }
+            } else {
+                for i in 0..<category.count {
+                    let label = LeaderBoard.arrangedSubviews[i] as! UILabel
+                    label.text = "\(Array(scores)[i].key) \(Array(scores)[i].value)"
+                    label.isHidden = false
+                }
+            }
+        } else {
+            let emptyLabel: UILabel = LeaderBoard.arrangedSubviews[0] as! UILabel
+            emptyLabel.text = "No scores reported"
+        }
+    }
+    
+    func resetLabels() {
+        for label: UIView in LeaderBoard.arrangedSubviews {
+            label.isHidden = true
+        }
+    }
 
-
+    @IBAction func changeCategory(_ sender: UISegmentedControl) {
+        if (sender.selectedSegmentIndex == 1) {
+            resetLabels()
+            loadScores(name: "sayings")
+        } else {
+            resetLabels()
+            loadScores(name: "movies")
+        }
+    }
+    
 }
 
