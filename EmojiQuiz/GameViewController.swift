@@ -43,6 +43,7 @@ class GameViewController: UIViewController {
     var numQuestions: Int = 0
     
     var incorrectGuesses: Int = 0
+    var score: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,8 +86,10 @@ class GameViewController: UIViewController {
             AnswerLabel.text = currentAnswerString
             
             if (!currentAnswerString.contains("-") && currentQuestionIndex == numQuestions - 1) {
+                score += 1
                 loadLeaderBoard()
             } else if (!currentAnswerString.contains("-") && currentQuestionIndex < numQuestions) {
+                score += 1
                 loadNextQuestion()
             }
         } else {
@@ -125,7 +128,8 @@ class GameViewController: UIViewController {
     }
     
     func loadLeaderBoard() {
-        performSegue(withIdentifier: "ShowLeaderBoard",
+        UserDefaults.standard.set(score, forKey: "score")
+        performSegue(withIdentifier: "EndGame",
                      sender: self)
     }
     
