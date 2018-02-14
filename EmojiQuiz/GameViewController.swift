@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AVFoundation
+import AudioToolbox
 
 extension String {
     
@@ -62,6 +64,8 @@ class GameViewController: UIViewController {
     var score: Int = 0
     var countDown = 30
     
+    var audioPlayer : AVAudioPlayer!
+    
     var timer: Timer?
     
     override func viewDidLoad() {
@@ -109,14 +113,17 @@ class GameViewController: UIViewController {
             if (!currentAnswerString.contains("-") && currentQuestionIndex == numQuestions - 1) {
                 score += 1
                 print("TEST")
+                playSound(wasSuccess: true)
                 loadLeaderBoard()
             } else if (!currentAnswerString.contains("-") && currentQuestionIndex < numQuestions) {
                 score += 1
+                playSound(wasSuccess: true)
                 loadNextQuestion()
             }
         } else {
             incorrectGuesses += 1
             sender.setTitleColor(.red, for: UIControlState.normal)
+            playSound(wasSuccess: false)
             if incorrectGuesses == 3 {
                 loadLeaderBoard()
             }
@@ -143,7 +150,7 @@ class GameViewController: UIViewController {
     func loadNextQuestion() {
         currentQuestionIndex += 1
         countDown = 30
-        
+    
         setAnswersToDashes(currentQuestionIndex)
         resetKeyboard()
         
@@ -176,6 +183,7 @@ class GameViewController: UIViewController {
         score = 0
     }
     
+    //check the value of the category switch to find the name of it
     func checkCategory () {
         
         if category == "0" {
@@ -193,6 +201,31 @@ class GameViewController: UIViewController {
         
     }
     
+    //Use this function to play sounds, Pass it true for the success noise and flase for the fail noise
+    func playSound(wasSuccess: Bool) {
+        var path : String
+        if wasSuccess{
+            path = Bundle.main.path(forResource: "TadaSoundEffect", ofType:"mp3")!
+            print("tada")
+        }
+        else {
+            path = Bundle.main.path(forResource: "PianoBroken", ofType:"mp3")!
+            print("ouch")
+        }
+        let url = URL(fileURLWithPath: path)
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: url)
+            guard let audioPlayer = audioPlayer else { return }
+            
+            audioPlayer.prepareToPlay()
+            audioPlayer.play()
+            print("SOUND!")
+        } catch let error as NSError {
+            print(error.description)
+        }
+    }
+    
+    //reads from a file based on the category selected. shuffle the questions after loaded.
     func readPlist () {
         var newQuestion : Question
         checkCategory()
