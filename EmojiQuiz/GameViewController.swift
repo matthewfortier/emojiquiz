@@ -205,11 +205,11 @@ class GameViewController: UIViewController {
     func playSound(wasSuccess: Bool) {
         var path : String
         if wasSuccess{
-            path = Bundle.main.path(forResource: "TadaSoundEffect", ofType:"mp3")!
+            path = Bundle.main.path(forResource: "correct", ofType:"mp3")!
             print("tada")
         }
         else {
-            path = Bundle.main.path(forResource: "PianoBroken", ofType:"mp3")!
+            path = Bundle.main.path(forResource: "wrong", ofType:"mp3")!
             print("ouch")
         }
         let url = URL(fileURLWithPath: path)

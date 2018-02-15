@@ -10,6 +10,8 @@
 		1A244E3920335A2E00DCF4D1 /* EndGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A244E3820335A2E00DCF4D1 /* EndGameViewController.swift */; };
 		1A244E3C20336C9800DCF4D1 /* movies.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1A244E3A20336C9700DCF4D1 /* movies.plist */; };
 		1A244E3D20336C9800DCF4D1 /* sayings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1A244E3B20336C9700DCF4D1 /* sayings.plist */; };
+		1A244E44203544EC00DCF4D1 /* correct.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1A244E42203544EB00DCF4D1 /* correct.mp3 */; };
+		1A244E45203544EC00DCF4D1 /* wrong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1A244E43203544EC00DCF4D1 /* wrong.mp3 */; };
 		1AAAC741202D0A1500B7EA36 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAAC740202D0A1500B7EA36 /* AppDelegate.swift */; };
 		1AAAC743202D0A1500B7EA36 /* ConfigureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAAC742202D0A1500B7EA36 /* ConfigureViewController.swift */; };
 		1AAAC745202D0A1500B7EA36 /* LeaderBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAAC744202D0A1500B7EA36 /* LeaderBoardViewController.swift */; };
@@ -24,6 +26,8 @@
 		1A244E3820335A2E00DCF4D1 /* EndGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndGameViewController.swift; sourceTree = "<group>"; };
 		1A244E3A20336C9700DCF4D1 /* movies.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = movies.plist; sourceTree = "<group>"; };
 		1A244E3B20336C9700DCF4D1 /* sayings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sayings.plist; sourceTree = "<group>"; };
+		1A244E42203544EB00DCF4D1 /* correct.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = correct.mp3; sourceTree = "<group>"; };
+		1A244E43203544EC00DCF4D1 /* wrong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = wrong.mp3; sourceTree = "<group>"; };
 		1AAAC73D202D0A1400B7EA36 /* EmojiQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmojiQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AAAC740202D0A1500B7EA36 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1AAAC742202D0A1500B7EA36 /* ConfigureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +70,8 @@
 		1AAAC73F202D0A1400B7EA36 /* EmojiQuiz */ = {
 			isa = PBXGroup;
 			children = (
+				1A244E42203544EB00DCF4D1 /* correct.mp3 */,
+				1A244E43203544EC00DCF4D1 /* wrong.mp3 */,
 				1A244E3A20336C9700DCF4D1 /* movies.plist */,
 				1A244E3B20336C9700DCF4D1 /* sayings.plist */,
 				1AAAC740202D0A1500B7EA36 /* AppDelegate.swift */,
@@ -143,9 +149,11 @@
 			files = (
 				1AAAC74D202D0A1500B7EA36 /* LaunchScreen.storyboard in Resources */,
 				1A244E3D20336C9800DCF4D1 /* sayings.plist in Resources */,
+				1A244E45203544EC00DCF4D1 /* wrong.mp3 in Resources */,
 				1A244E3C20336C9800DCF4D1 /* movies.plist in Resources */,
 				1AAAC74A202D0A1500B7EA36 /* Assets.xcassets in Resources */,
 				1AAAC748202D0A1500B7EA36 /* Main.storyboard in Resources */,
+				1A244E44203544EC00DCF4D1 /* correct.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
