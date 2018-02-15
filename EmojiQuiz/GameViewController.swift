@@ -30,6 +30,7 @@ extension String {
     }
 }
 
+//From Dave Kopek, shuffle an array
 extension Array {
     public func shuffled() -> Array<Element> {
         var shuffledArray = self // value semantics (Array is Struct) makes this a copy
@@ -86,6 +87,7 @@ class GameViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    //action for when any key on the keyboard is pressed
     @IBAction func keyPress(_ sender: UIButton) {
         let label: String = (sender.titleLabel?.text)!
         
@@ -97,6 +99,8 @@ class GameViewController: UIViewController {
         let uppercasedAnswer: String = questions[currentQuestionIndex].getAnswer().uppercased()
         let currentAnswer: String = questions[currentQuestionIndex].getAnswer()
         
+        //check the answer to see if the keyboard input is valid 
+        //if the input was valid update the string with the propper letter
         if (uppercasedAnswer.contains(label)) {
             
             for i in 0..<currentAnswer.count {
@@ -107,19 +111,23 @@ class GameViewController: UIViewController {
                     currentAnswerString = currentAnswerString.replace(i, currentAnswer[index])
                 }
             }
-            
+            //update the UI label
             AnswerLabel.text = currentAnswerString
             
+            //check states to move on
+            //if the current answer is complete and this is the last question jump to the leaderboard
             if (!currentAnswerString.contains("-") && currentQuestionIndex == numQuestions - 1) {
                 score += 1
                 print("TEST")
                 playSound(wasSuccess: true)
                 loadLeaderBoard()
+                //if the current answer is complete move to the next question
             } else if (!currentAnswerString.contains("-") && currentQuestionIndex < numQuestions) {
                 score += 1
                 playSound(wasSuccess: true)
                 loadNextQuestion()
             }
+            //if the guess was incorrect play the sound, and set the key color to red.
         } else {
             incorrectGuesses += 1
             sender.setTitleColor(.red, for: UIControlState.normal)
@@ -129,7 +137,7 @@ class GameViewController: UIViewController {
             }
         }
     }
-    
+    //update the timer label and check for timeout
     @objc func updateCountDown() {
         if(countDown > 0) {
             TimerLabel.text = String(countDown)
@@ -140,6 +148,7 @@ class GameViewController: UIViewController {
         }
     }
     
+    //set the label to all dashes and prepare the answer string to be edited later
     func setAnswersToDashes(_ index: Int) {
         let y = questions[index].getAnswer().replacingOccurrences(of: "[a-zA-Z0-9]", with: "-", options: .regularExpression, range: nil)
         
@@ -166,6 +175,8 @@ class GameViewController: UIViewController {
             }, completion: nil)
         })
     }
+    
+    
     
     func loadLeaderBoard() {
         
@@ -240,6 +251,8 @@ class GameViewController: UIViewController {
         questions = questions.shuffled()
     }
     
+    
+    //re-enable all of the buttons on the keyboard
     func resetKeyboard() {
         for row: UIView in Keyboard.arrangedSubviews {
             for col in row.subviews {
